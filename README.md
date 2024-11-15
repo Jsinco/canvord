@@ -1,0 +1,1 @@
+A Discord bot for Canvas integration. Built with student-run communities in mind.

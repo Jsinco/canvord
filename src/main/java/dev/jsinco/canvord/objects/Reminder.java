@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Reminder {
 
-    private final String identifier;
-    private final MessageChannel channel;
-    private final String message;
-    private final LocalDateTime when;
-    private final ReminderFrequency frequency;
+    protected final String identifier;
+    protected final MessageChannel channel;
+    protected final String message;
+    protected final LocalDateTime when;
+    protected final ReminderFrequency frequency;
 
-    private LocalDateTime lastSent;
+    protected LocalDateTime lastSent;
 
 
     public boolean shouldSendNow() {

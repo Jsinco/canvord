@@ -1,24 +1,28 @@
 package dev.jsinco.canvord.objects;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@AllArgsConstructor
-public class Meeting {
+public class Meeting extends Reminder {
 
-    private final String identifier;
-    private final MessageChannel channel;
-    private final String message;
-    private final LocalDateTime when;
     private final Set<User> attendees; // List of attendee ids
 
+    public Meeting(String identifier, MessageChannel channel, String message, LocalDateTime when, ReminderFrequency frequency, LocalDateTime lastSent) {
+        super(identifier, channel, message, when, frequency, lastSent);
+        this.attendees = new HashSet<>();
+    }
+
+
+    public boolean shouldRemindOfMeeting() {
+        return super.shouldSendNow();
+    }
 
     public boolean shouldSendNow() {
         return LocalDateTime.now().isAfter(when);
@@ -26,6 +30,8 @@ public class Meeting {
 
     public void send() {
         // Send embed message to the channel
+        EmbedBuilder embed = new EmbedBuilder();
+
     }
 
 }

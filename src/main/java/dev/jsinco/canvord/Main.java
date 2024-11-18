@@ -1,7 +1,9 @@
 package dev.jsinco.canvord;
 
+import dev.jsinco.canvord.console.PrivilegedUserConsoleCommand;
 import dev.jsinco.canvord.utility.StringUtil;
 import dev.jsinco.discord.framework.FrameWork;
+import dev.jsinco.discord.framework.console.ConsoleCommandManager;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -12,6 +14,8 @@ public class Main {
         System.out.println("Using " + dataFolderPath + " as data folder.");
 
         FrameWork.start(Main.class, dataFolderPath);
+
+        ConsoleCommandManager.getInstance().registerCommand(new PrivilegedUserConsoleCommand());
     }
 
 

@@ -1,6 +1,7 @@
 package dev.jsinco.canvord.files;
 
 import dev.jsinco.discord.framework.settings.AbstractOkaeriConfig;
+import eu.okaeri.configs.annotation.Exclude;
 import eu.okaeri.configs.json.gson.JsonGsonConfigurer;
 import lombok.Getter;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 @Getter
 public class GuildDataManager {
 
-    @Getter
+    @Getter @Exclude
     private static final GuildDataManager instance = new GuildDataManager();
 
     private final Map<String, GuildDataFile> loadedGuildDataFiles;

@@ -3,6 +3,7 @@ package dev.jsinco.canvord.console;
 import dev.jsinco.canvord.files.CanvordConfig;
 import dev.jsinco.canvord.utility.Util;
 import dev.jsinco.discord.framework.console.ConsoleCommand;
+import dev.jsinco.discord.framework.logging.FrameWorkLogger;
 
 public class PrivilegedUserConsoleCommand implements ConsoleCommand {
 
@@ -19,23 +20,23 @@ public class PrivilegedUserConsoleCommand implements ConsoleCommand {
     @Override
     public void execute(String[] strings) {
         if (strings.length < 2) {
-            System.out.println("Usage: privilege <add|remove> <user_id>");
+            FrameWorkLogger.info("Usage: privilege <add|remove> <user_id>");
             return;
         }
 
-        Action action = Util.getEnum(Action.class, strings[0], Action.ADD);
-        String userId = strings[1];
+        Action action = Util.getEnum(Action.class, strings[1], Action.ADD);
+        String userId = strings[2];
 
         CanvordConfig config = CanvordConfig.getInstance();
 
         switch (action) {
             case ADD -> {
                 config.getPrivilegedUsers().add(userId);
-                System.out.println("Added " + userId + " to privileged users list.");
+                FrameWorkLogger.info("Added " + userId + " to privileged users list.");
             }
             case REMOVE -> {
                 config.getPrivilegedUsers().remove(userId);
-                System.out.println("Removed " + userId + " from privileged users list.");
+                FrameWorkLogger.info("Removed " + userId + " from privileged users list.");
             }
         }
 

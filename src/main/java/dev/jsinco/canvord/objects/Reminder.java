@@ -2,24 +2,33 @@ package dev.jsinco.canvord.objects;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 
 import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor
+@Setter
 public class Reminder {
 
-    private final String identifier;
-    private final MessageChannel channel;
-    private final String message;
-    private final LocalDateTime when;
-    private final ReminderFrequency frequency;
+    protected final String identifier;
+    protected final MessageChannel channel;
+    protected final String message;
+    protected final LocalDateTime when;
+    protected final ReminderFrequency frequency;
 
-    private LocalDateTime lastSent;
+    protected LocalDateTime lastSent;
+
+    public Reminder(String identifier, MessageChannel channel, String message, LocalDateTime when, ReminderFrequency frequency) {
+        this.identifier = identifier;
+        this.channel = channel;
+        this.message = message;
+        this.when = when;
+        this.frequency = frequency;
+    }
 
 
-    public boolean shouldSendNow() {
+    public boolean shouldRemind() {
         boolean frequencyTruth;
         if (lastSent == null) {
             frequencyTruth = true;

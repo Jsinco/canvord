@@ -21,6 +21,10 @@ dependencies {
         exclude("org.slf4j", "slf4j-api")
     }
 
+    // Logger
+    implementation("org.apache.logging.log4j:log4j-core:2.24.1")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.24.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.24.1")
 
     // Google guava/gson
     implementation("com.google.guava:guava:33.3.1-jre")
@@ -34,8 +38,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.30")
 
     // Framework
-    //implementation("com.github.Jsinco:jda-framework:1.2")
-    implementation(files("lib/jda-framework-1.3.jar"))
+    implementation("com.github.Jsinco:jda-framework:1.5")
 
     // Canvas integration
     implementation("com.github.Jsinco:canvas-api:2.0.2")
@@ -44,7 +47,7 @@ dependencies {
     implementation("io.github.furstenheim:copy_down:1.0")
 
     // Config
-    implementation("eu.okaeri:okaeri-configs-yaml-snakeyaml:5.0.5")
+    compileOnly("eu.okaeri:okaeri-configs-yaml-snakeyaml:5.0.5")
     implementation("eu.okaeri:okaeri-configs-json-gson:5.0.5")
 }
 
